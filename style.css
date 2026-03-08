@@ -1,0 +1,57 @@
+/* css/style.css */
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #fcf9f9;
+    transition: background-color 3s ease-in-out;
+}
+
+/* Classe adicionada via JS para escurecer o fundo quando as flores crescem */
+body.blooming {
+    background-color: #1a0f14;
+}
+
+#btn-presente {
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 15px rgba(219, 39, 119, 0.2);
+}
+
+#btn-presente:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(219, 39, 119, 0.4);
+}
+
+/* Fundo de gradiente que aparece junto com as flores */
+#bg-gradient {
+    background: radial-gradient(circle at bottom, #4a1528 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 4s ease-in-out;
+}
+
+/* Estilos para as Nuvens Sentimentais */
+.nuvem-frase {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fce7f3;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    opacity: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    pointer-events: none;
+    z-index: 25;
+    transition: opacity 1.5s ease-in-out;
+    transform: translateX(-50%);
+}
+
+/* Animação que faz a nuvem subir e descer lentamente */
+@keyframes flutuar {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-20px); }
+    100% { transform: translateX(-50%) translateY(10px); }
+}
