@@ -8,14 +8,6 @@ const uiContainer = document.getElementById('ui-container');
 const bgGradient = document.getElementById('bg-gradient');
 const mensagemFinal = document.getElementById('mensagem-final');
 
-// Ajustar o tamanho do canvas para o tamanho da tela
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
 // Variáveis de Controle de Estado da Animação
 let estado = "aguardando";
 let semente = { y: 0, x: 0, velocidade: 0 };
@@ -43,6 +35,25 @@ const frasesNuvens = [
 // Fila de frases para controlar a ordem de aparecimento
 let filaDeFrases = [...frasesNuvens];
 const maxNuvensNaTela = 6;
+
+// Ajustar o tamanho do canvas com responsividade
+function resizeCanvas() {
+    const oldWidth = canvas.width || window.innerWidth;
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Se as flores já existem, reposicioná-las proporcionalmente
+    if (flores && flores.length > 0) {
+        const widthRatio = canvas.width / oldWidth;
+        flores.forEach(flor => {
+            flor.x = flor.x * widthRatio;
+            flor.y = canvas.height;
+        });
+    }
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
 // 2. CLASSES DOS OBJETOS DA ANIMAÇÃO
 
